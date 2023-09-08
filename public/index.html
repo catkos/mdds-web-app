@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/output.css" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="chat.js"></script>
+    <title>Chat app</title>
+  </head>
+  <body>
+    <main class="bg-if-black h-screen flex flex-col justify-center">
+      <article class="p-5 w-full flex justify-center items-center">
+        <h1 class="text-if-green text-2xl flex grow">Chat.</h1>
+        <section id="usernameSection" class="">
+          <div class="">
+            <form id="usernameForm">
+              <label for="name" class="sr-only">Aseta käyttäjänimi</label>
+              <input class="rounded" type="text" id="name" placeholder="Aseta käyttäjänimi" />
+              <button class="btn-primary" type="submit">Aseta</button>
+            </form>
+          </div>
+        </section>
+      </article>
+      <article class="grow flex bg-if-white justify-center w-full">
+        <section id="chatSection" class="flex flex-col justify-between w-full">
+          <!-- Message/chat section -->
+          <div class="px-5 py-5 flex justify-center h-[calc(100vh-164px)] overflow-auto" id="messageSection">
+            <div id="messages" class="text-if-white w-full md:w-1/2"></div>
+          </div>
+          <!-- Send message footer box -->
+          <div class="px-5 py-5 bg-if-black flex justify-center">
+            <form id="inputMsg" class="w-full md:w-1/2">
+              <div class="flex">
+                <div class="relative flex grow">
+                  <div class="absolute inset-y-0 flex items-center pl-2 text-if-red">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>                    
+                  </div>
+                  <label for="m" class="sr-only">Lähetä viesti</label>
+                  <input class="rounded pl-10 flex grow placeholder:italic caret-if-red focus:border-if-red focus:outline-none focus:ring-0" type="text" id="m" placeholder="Lähetä viesti..." />
+                </div>  
+                <button class="btn-primary ml-1" type="submit" >Lähetä</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </article>
+     </main>
+  </body>
+</html>
