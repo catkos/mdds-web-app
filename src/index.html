@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indiekuvafest</title>
+    <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="bg-if-green p-4 h-16 flex items-center justify-between">
+        <a class="text-if-black" href="index.html">Indiekuvafest</a>
+        <div>
+            <a class="text-if-black" href="live.html">LIVE.</a>
+            <a class="text-if-black" href="info.html">Event Info.</a>
+        </div>
+    </nav>
+    <main class="">
+        <!--- BANNER/HERO -->
+        <article class="p-15 bg-[url(img/heroBanner.gif)] bg-center h-96 flex flex-col justify-center items-center">
+            <h1 class="text-4xl md:text-5xl text-if-white">Indiekuvafest</h1>
+            <p class="text-if-white py-1 text-center">for your independent art needs</p>
+            <a href="live.html">
+                <button class="btn-primary mt-5">LIVE</button>
+            </a>
+        </article>
+        <!-- First section -->
+        <article class="flex flex-col md:flex-row justify-center items-center p-20 bg-gradient-to-r  from-if-black to-if-purple">
+            <section class="drop-shadow-lg	m-10 relative w-72 h-72 md:w-96 md:h-96">
+                <div class="w-full h-full absolute animate-wiggle rounded-full bg-if-green bg-[url(img/thinking.svg)] bg-center bg-cover bg-no-repeat">
+                </div>
+                <div class="rounded border-2 border-if-green absolute inset-0 m-5"></div>
+            </section>
+            <section class="m-10 flex-1">
+                <h2 class="pb-10">Cool title.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Sed rutrum metus vel diam facilisis blandit.</p>
+                <p>Katso tapahtumatiedot tästä:</p>
+                <a href="info.html">
+                    <button class="btn-primary mt-5">Event info</button>
+                </a>
+            </section>
+        </article>
+        <!-- Second section -->
+        <article class="flex flex-col-reverse md:flex-row justify-center items-center p-20 bg-gradient-to-r  from-if-red to-if-yellow">
+            <section class="m-10 flex-1">
+                <h2 class="pb-10">Another cool title.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Sed rutrum metus vel diam facilisis blandit.</p>
+                <p>Integer non aliquam ipsum. Fusce vestibulum varius elit nec dignissim.</p>
+            </section>
+            <section class="flex justify-center items-center drop-shadow-lg	m-10 relative w-72 h-72 md:w-96 md:h-96">
+                <div class="w-10/12 h-5/6 rounded bg-if-green bg-[url(img/thinking.svg)] bg-center bg-cover bg-no-repeat">
+                </div>
+                <div class="animate-wiggle rounded-full border-2 border-if-green absolute inset-0"></div>
+            </section>
+        </article>
+    </main>
+    <footer class="h-16 flex items-center bg-if-black">
+        <p>FOOTER</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply font-bold;
+    }
+    h2 {
+        @apply text-xl;
+        @apply font-bold;
+        @apply text-if-white;
+    }
+    p {
+        @apply text-if-white;
+        @apply leading-loose;
+        @apply pb-1;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply transition ease-in-out delay-150 hover:scale-110 hover:bg-if-red bg-if-green p-2 px-5 text-center rounded;
+    }
+}
+
+/* custom font */
+@font-face {
+    font-family: "KronaOne";
+    src: url("/dist/font/KronaOne-Regular.ttf");
+}
