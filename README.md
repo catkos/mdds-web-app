@@ -1,1 +1,1 @@
-# mdds-web-app
+# mdds-server
