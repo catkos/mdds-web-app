@@ -36,17 +36,20 @@ io.on('connection', (socket) => {
     console.log('a user disconnected', socket.id);
   });
 
+  // Switch rooms, leave previous room
+  socket.on('join room', room => {
+    socket.leave(selectedRoom);
+      
+    socket.join(room);
+
+    selectedRoom = room;
+  
+    // let user know they switched rooms
+    socket.emit('joined a room', 'Liityit huoneeseen ' + selectedRoom);
+  });
+
   // Get chat message, what room they're in, and who sent the message
   socket.on('chat message', (msg, room, sender) => {
-
-    // Switch rooms, leave previous room
-    socket.on('join room', room => {
-      socket.leave(selectedRoom);
-      
-      socket.join(room);
-
-      selectedRoom = room;
-    });
 
     // Emit chat message to room
     io.to(room).emit('chat message', {msg, sender, username});

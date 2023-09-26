@@ -11,22 +11,38 @@
 // Server URL below must point to your server, localhost works for local development/testing
 const socket = io('http://localhost:3000/');
 
-// Render new username
+const loginForm = document.getElementById('joinForm');
+// hide chat messages and room selection
+document.getElementById('chatmessages').classList = 'hidden';
+document.getElementById('roomForm').classList = 'hidden';
 let setUsername = 'Anonyymi';
-socket.emit('user connected', setUsername);
-const usernameText = document.getElementById('username');
-usernameText.innerHTML = setUsername;
 
-// display a welcome message when someone new joins
-socket.on('welcome', (welcomeMessage) => {
-  displayMessage(welcomeMessage);
-});
 // display a goodbye message when someone disconnects
 socket.on('goodbye', (goodbyeMessage) => {
   displayMessage(goodbyeMessage);
 });
 
-// render a system message to chat message section
+// Join/Login form
+loginForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const username = document.getElementById('username').value;
+  if(username) {
+    socket.emit('user connected', username);
+
+    setUsername = username;
+
+    // hide login section and unhide messages and room selection
+    document.getElementById('loginSection').classList = 'hidden';
+    document.getElementById('chatmessages').classList = 'grow h-full max-h-[70%] flex bg-if-white justify-center w-full';
+    document.getElementById('roomForm').classList = '';
+
+    socket.on('welcome', (welcomeMessage) => {
+      displayMessage(welcomeMessage);
+    });
+  }
+});
+
+// Render a system message to chat message section
 const displayMessage = (message) => {
   const bubble = document.createElement('div');
   const greetingText = document.createElement('span');
@@ -34,16 +50,22 @@ const displayMessage = (message) => {
   greetingText.innerHTML = message;
   greetingText.classList = 'text-if-black';
 
-  bubble.classList = 'text-center';
+  bubble.classList = 'text-center pb-5';
   bubble.appendChild(greetingText);
   document.getElementById('messages').appendChild(bubble);
+
+  // Scroll to the bottom of the section
+  const messageSection = document.querySelector('#messageSection');
+  messageSection.scrollTop = messageSection.scrollHeight;
 };
 
 // Change room
 document.querySelector('#huone').addEventListener('change', () => {
   const room = document.getElementById('huone').value;
-  console.log('huone', room);
   socket.emit('join room', room);
+  socket.on('joined a room', (roomChangeMsg) => {
+    displayMessage(roomChangeMsg);
+  })
 });
 
 // Send chat message to server side

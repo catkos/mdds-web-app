@@ -20,7 +20,7 @@
 
 @layer components {
     .btn-primary {
-        @apply transition ease-in-out delay-150 hover:scale-110 hover:bg-if-red bg-if-green p-2 px-5 text-center rounded;
+        @apply transition ease-in-out delay-150 hover:scale-105 hover:bg-if-red bg-if-green p-2 px-5 text-center rounded;
     }
 }
 

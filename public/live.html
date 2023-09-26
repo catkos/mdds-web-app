@@ -6,10 +6,11 @@
     <title>Indiekuvafest - LIVE</title>
     <link href="css/dist/output.css" rel="stylesheet">
     <link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet" />
+    <link href="css/dist/videostyle.css" rel="stylesheet">
     <script src="/socket.io/socket.io.js"></script>
     <script defer src="chat.js"></script>
 </head>
-<body>
+<body class="flex flex-col h-screen">
     <nav class="bg-if-green p-4 h-16 flex items-center justify-between">
         <a class="text-if-black" href="index.html">Indiekuvafest</a>
         <div>
@@ -17,69 +18,76 @@
             <a class="text-if-black" href="info.html">Event Info.</a>
         </div>
     </nav>
-    <main class="flex flex-row">
+    <main class="flex flex-col md:flex-row grow items-stretch bg-if-black md:bg-gradient-to-r from-if-red to-if-yellow h-full">
         <!-- VIDEO/Stream section -->
-        <article class="">
-            <video    
-                id="my-video"
-                class="video-js"
-                data-setup="{}"
-            >
-                <source src="http://195.148.104.124:1935/jakelu/ulla/playlist.m3u8" type="application/x-mpegURL" />
+        <article class="w-screen md:w-3/5 lg:w-2/3 md:p-4">
+            <video id="my-video" class="video-js vjs-video-if drop-shadow-lg" data-setup="{}">
+                <source src="http://195.148.104.124:1935/jakelu/catkos/catkos/playlist.m3u8" type="application/x-mpegURL" />
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a
-                    web browser that
-                    <a href="https://videojs.com/html5-video-support/" target="_blank"
-                      >supports HTML5 video</a
-                    >
-                  </p>
+                    web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                </p>
             </video>
         </article>
         <!-- CHAT section -->
-        <article>
+        <article class="w-full md:w-2/5 lg:w-1/3 md:m-4 h-full max-h-[70%] md:h-[92%] border-2 rounded border-if-black bg-gradient-to-r from-if-black to-if-purple drop-shadow-lg">
             <!-- Chat nav/header -->
-            <section class="p-5 w-full flex justify-center items-center bg-if-black">
-                <h1 class="text-if-green text-2xl flex">Chat.</h1>
-                <form id="roomForm" class="flex grow justify-center">
+            <section class="p-5 w-full bg-if-black flex items-center justify-between">
+                <h2 class="text-if-green text-2xl flex">Chat.</h2>
+                <form id="roomForm" class="flex grow justify-end">
                     <select class="mr-1 text-sm rounded bg-if-black text-if-green border border-if-green focus:border-if-green" id="huone" name="huone">
                         <option value="1">Huone 1</option>
                         <option value="2">Huone 2</option>
                     </select>
                 </form>
+                <!--
                 <section id="usernameSection" class="">
                 <div class="flex flex-row items-center">
                     <p class="text-if-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg></p><h2 id="username" class="text-if-white">Anonyymi</h2>
                 </div>
                 </section>
+                -->
+            </section>
+            <!-- LOGIN section -->
+            <section id="loginSection" class="flex items-center justify-center p-5 pt-8">
+                <form id="joinForm" class="flex flex-col">
+                    <input id="username" class="border-2 rounded p-2 placeholder:italic caret-if-blue focus:border-if-blue focus:outline-none focus:ring-0" type="text" id="m" placeholder="Kirjoita käyttäjänimi..." />
+                    <button class="btn-primary m-5"" type="submit">Liity</button>
+                  </form>
             </section>
             <!-- Message bubble section -->
-            <section class="grow flex bg-if-white justify-center w-full">
+            <section class="" id="chatmessages">
                 <section id="chatSection" class="flex flex-col justify-between w-full">
-                <!-- Displaying chat messages -->
-                <div class="px-5 py-5 flex justify-center h-[calc(100vh-164px)] overflow-auto" id="messageSection">
-                    <div id="messages" class="text-if-white w-full"></div>
-                </div>
-                <!-- Send message box -->
-                <div class="px-5 py-5 bg-if-black flex justify-center">
-                    <form id="inputMsg" class="w-full">
-                    <div class="flex">
-                        <div class="relative flex grow">
-                        <div class="absolute inset-y-0 flex items-center pl-2 text-if-blue">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                            </svg>                    
-                        </div>
-                        <label for="m" class="sr-only">Lähetä viesti</label>
-                        <input class="rounded pl-10 flex grow placeholder:italic caret-if-blue focus:border-if-blue focus:outline-none focus:ring-0" type="text" id="m" placeholder="Lähetä viesti..." />
-                        </div>  
-                        <button class="btn-primary ml-1" type="submit" >Lähetä</button>
+                    <!-- Displaying chat messages -->
+                    <div class="px-5 py-5 flex justify-center overflow-auto" id="messageSection">
+                        <div id="messages" class="text-if-white w-full"></div>
                     </div>
-                    </form>
-                </div>
+                    <!-- Send message box -->
+                    <div class="px-5 py-5 border-2 border-if-black bg-if-black flex justify-center">
+                        <form id="inputMsg" class="w-full flex">
+                            <div class="relative flex grow">
+                            <div class="absolute inset-y-0 flex items-center pl-2 text-if-blue">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                                </svg>                    
+                            </div>
+                            <label for="m" class="sr-only">Lähetä viesti</label>
+                            <input class="w-[200px] rounded pl-10 flex grow placeholder:italic caret-if-blue focus:border-if-blue focus:outline-none focus:ring-0" type="text" id="m" placeholder="Lähetä viesti..." />
+                            </div>  
+                            <button class="btn-primary ml-1 text-if-black" type="submit" >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                                </svg>                              
+                            </button>
+                        </form>
+                    </div>
                 </section>
             </section>
         </article>
     </main>
+    <footer class="h-16 flex items-center bg-if-black">
+        <p>FOOTER</p>
+    </footer>
 
     <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
     <script>
@@ -88,12 +96,13 @@
 
         videojs(myPlayer, {
             controls: true,
-            autoplay: false,
-            playbackRates: [0.5, 1, 1.5, 2],
+            autoplay: false, //change this to true
             width: 600,
             preload: 'auto',
             liveui: true,
             inactivityTimeout: 0,
+            aspectRatio: '16:9',
+            poster: "/css/dist/img/indiekuvafest_live_poster.png",
         });
 
     </script>
