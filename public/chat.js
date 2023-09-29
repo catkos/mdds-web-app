@@ -33,7 +33,7 @@ loginForm.addEventListener('submit', (evt) => {
 
     // hide login section and unhide messages and room selection
     document.getElementById('loginSection').classList = 'hidden';
-    document.getElementById('chatmessages').classList = 'grow h-full max-h-[70%] flex bg-if-white justify-center w-full';
+    document.getElementById('chatmessages').classList = 'flex bg-if-white justify-center w-full h-[416px]';
     document.getElementById('roomForm').classList = '';
 
     socket.on('welcome', (welcomeMessage) => {
