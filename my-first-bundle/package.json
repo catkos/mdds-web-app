@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "",
   "author": {
-    "name": "catrina",
+    "name": "Catrina Koskinen",
     "email": "catrina.koskinen@metropolia.fi",
     "url": ""
   },
@@ -20,6 +20,14 @@
   ],
   "nodecg": {
     "compatibleRange": "^2.0.0",
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      }
+    ],
     "dashboardPanels": [
       {
         "name": "panel",
@@ -27,14 +35,6 @@
         "width": 2,
         "file": "panel.html",
         "headerColor": "#525F78"
-      }
-    ],
-    "graphics": [
-      {
-        "file": "index.html",
-        "width": 1280,
-        "height": 720,
-        "singleInstance": false
       }
     ]
   },

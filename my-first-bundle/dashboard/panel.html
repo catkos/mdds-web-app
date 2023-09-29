@@ -12,28 +12,11 @@
 		<form id="speakerForm">
 			<label for="speaker">Puhujan nimi</label>
 			<input type="text" id="speaker" />
-			<button type="submit">Vaihda nimeä</button>
-		  </form>
-	   
-	   
-		  <script>
-			const speakerRep = nodecg.Replicant("speakerReplicant");
-			const speaker = document.getElementById("speaker");
-	   
-	   
-			speakerRep.on("change", (newValue, oldValue) => {
-			  console.log(`myRep changed from ${oldValue} to ${newValue}`);
-			  speaker.value = newValue;
-			});
-
-			const speakerForm = document.getElementById("speakerForm");
-
-			speakerForm.addEventListener("submit", (e) => {
-			e.preventDefault;
-			speakerRep.value = speaker.value;
-			});
-		  </script>
-	   
+			<br>
+			<label for="title">Puhujan titteli</label>
+			<input type="text" id="role" />
+			<button type="submit">Vaihda nimi ja titteli</button>
+		</form>
 		<script type="module" src="./panel.js"></script>
 	</body>
 </html>
